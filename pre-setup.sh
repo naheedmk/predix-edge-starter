@@ -233,7 +233,7 @@ __addUaaUser "$uaaURL"
 
 # Get the Asset URI and generate Asset body from the enviroment variables (for use when querying and posting data)
 
-if assetURI=$(cf env $TEMP_APP | grep uri*| grep asset* | awk 'BEGIN {FS=":"}{print "https:"$3}' | awk 'BEGIN {FS="\","}{print $1}'); then
+if assetURI=$(cf env $TEMP_APP | grep uri | grep asset* | awk 'BEGIN {FS=":"}{print "https:"$3}' | awk 'BEGIN {FS="\","}{print $1}'); then
 	__append_new_line_log "assetURI copied from environment variables!" "$scriptRootDir"
 else
 	__error_exit "There was an error getting assetURI..." "$scriptRootDir"
