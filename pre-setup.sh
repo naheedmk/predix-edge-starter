@@ -183,7 +183,7 @@ else
 	__error_exit "There was an error getting TIMESERIES_INGEST_URI..." "$scriptRootDir"
 fi
 
-if TIMESERIES_QUERY_URI=$(cf env $TEMP_APP | grep -m 2 uri | grep https | sed 's/"uri": "//' | sed 's/",//' | tr -d '[[:space:]]'); then
+if TIMESERIES_QUERY_URI=$(cf env $TEMP_APP | grep time-series | grep uri | grep https | sed 's/"uri": "//' | sed 's/",//' | tr -d '[[:space:]]'); then
 	__append_new_line_log "TIMESERIES_QUERY_URI copied from enviromental variables!" "$scriptRootDir"
 else
 	__error_exit "There was an error getting TIMESERIES_QUERY_URI..." "$scriptRootDir"
